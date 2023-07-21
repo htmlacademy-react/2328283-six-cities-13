@@ -2,16 +2,19 @@
 // import Favorites from '/six-cities-react/src/pages/favorites/favorites';
 import Main from '/six-cities-react/src/pages/main/main';
 
-function App (){
+type AppProps = {
+  countOffers: number;
+}
+
+function App ({countOffers}:AppProps){
   return (
     <div>
-
-      <Main/>
+      <Main countOffers={countOffers} />
 
     </div>
   );
 }
 
 export default App;
-// Array.from({length:4},(_,i)=>({id:`фото:${i+1}`}))
+
 

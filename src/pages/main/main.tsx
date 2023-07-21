@@ -1,5 +1,11 @@
+
 import OfferCard from '../../components/app/offer-card/offer-card';
-function MainComponents (){
+
+type MainPrors = {
+  countOffers:number;
+}
+
+function Main ({countOffers}:MainPrors){
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -43,7 +49,7 @@ function MainComponents (){
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">312 places to stay in Amsterdam</b>
+            <b className="places__found">{countOffers} places to stay in Amsterdam</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
@@ -60,7 +66,7 @@ function MainComponents (){
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {Array.from({length: 5},(_,i)=>(
+              {Array.from({length: countOffers},(_,i)=>(
                 <OfferCard key={i}/>
               ))}
             </div>
@@ -73,4 +79,4 @@ function MainComponents (){
     </main>
   );
 }
-export default MainComponents;
+export default Main;
