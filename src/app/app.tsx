@@ -8,10 +8,7 @@ type AppProps = {
 
 function App ({countOffers}:AppProps){
   return (
-    <div>
-      <Main countOffers={countOffers} />
-
-    </div>
+    <Main countOffers={countOffers} />
   );
 }
 
