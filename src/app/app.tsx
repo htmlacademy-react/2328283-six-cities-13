@@ -36,8 +36,10 @@ function App ({countOffers}:AppProps){
           path={AppRoute.Favorites}
           element ={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth} childern={<Favorites/>}
-            />
+              authorizationStatus={AuthorizationStatus.NoAuth}
+            >
+              <Favorites/>
+            </PrivateRoute>
 
           }
         />
