@@ -1,12 +1,14 @@
 import OfferCard from '../../components/offer-card/offer-card';
 import HeaderNav from '../../components/header-nav/header-nav';
 import Logo from '../logo/logo';
+import OfferTypes from '../../types/offer-types';
 
 type MainProps = {
   countOffers:number;
+  Offers:OfferTypes;
 }
 
-function Main ({countOffers}:MainProps){
+function Main ({countOffers,Offers}:MainProps){
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -77,8 +79,8 @@ function Main ({countOffers}:MainProps){
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers},(_,i)=>(
-                  <OfferCard key={i}/>
+                {Array.from({length: countOffers},()=>(
+                  <OfferCard key={Offers.id}/>
                 ))}
               </div>
             </section>
