@@ -1,19 +1,19 @@
-import OfferCard from '../../components/offer-card/offer-card';
 import HeaderNav from '../../components/header-nav/header-nav';
 import Logo from '../logo/logo';
+import OfferTypes from '../../types/offer-types';
 
 type MainProps = {
-  countOffers:number;
+  offers: OfferTypes[];
 }
 
-function Main ({countOffers}:MainProps){
+function Main({ offers }: MainProps) {
   return (
     <div className="page page--gray page--main">
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
-            <Logo/>
-            <HeaderNav/>
+            <Logo />
+            <HeaderNav />
           </div>
         </div>
       </header>
@@ -60,7 +60,7 @@ function Main ({countOffers}:MainProps){
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{countOffers} places to stay in Amsterdam</b>
+              <b className="places__found"> places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -77,9 +77,46 @@ function Main ({countOffers}:MainProps){
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers},(_,i)=>(
-                  <OfferCard key={i}/>
-                ))}
+                {offers.map(((offer) => (
+                  <article className="cities__card place-card">
+                    <div className="place-card__mark">
+                      <span>{offer.isPremium}</span>
+                    </div>
+                    <div className="cities__image-wrapper place-card__image-wrapper">
+                      <a href="#">
+                        <img className="place-card__image"
+                          src={offer.previewImage}
+                          width="260"
+                          height="200"
+                          alt="Place image"
+                        />
+                      </a>
+                    </div>
+                    <div className="place-card__info">
+                      <div className="place-card__price-wrapper">
+                        <div className="place-card__price">
+                          <b className="place-card__price-value">{offer.price}</b>
+                          <span className="place-card__price-text">&#47;&nbsp;night</span>
+                        </div>
+                        <button className="place-card__bookmark-button button" type="button">
+                          <svg className="place-card__bookmark-icon" width="18" height="19">
+                            <use xlinkHref="#icon-bookmark"></use>
+                          </svg>
+                          <span className="visually-hidden">To bookmarks</span>
+                        </button>
+                      </div>
+                      <div className="place-card__rating rating">
+                        <div className="place-card__stars rating__stars">
+                          <span style={{ width: ' 80%' }}></span>
+                          <span className="visually-hidden">{offer.rating}</span>
+                        </div>
+                      </div>
+                      <h2 className="place-card__name">
+                        <a href="#">{offer.title}</a>
+                      </h2>
+                      <p className="place-card__type">{offer.type}</p>
+                    </div>
+                  </article>)))}
               </div>
             </section>
             <div className="cities__right-section">

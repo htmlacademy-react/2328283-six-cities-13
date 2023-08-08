@@ -6,20 +6,21 @@ import Offer from '../pages/offer/offer';
 import PrivateRoute from '../components/private-route/private-route';
 import { AppRoute, AuthorizationStatus } from '../const';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import OfferTypes from '../types/offer-types';
 
 
 type AppProps = {
-  countOffers: number;
+  offers:OfferTypes[];
 }
 
-function App ({countOffers}:AppProps){
+function App ({offers}:AppProps){
   return (
     <BrowserRouter>
       <Routes>
 
         <Route
           path={AppRoute.Main}
-          element={<Main countOffers={countOffers} />}
+          element={<Main offers={offers}/>}
         />
 
         <Route
