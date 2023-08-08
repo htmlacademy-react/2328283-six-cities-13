@@ -10,21 +10,17 @@ import OfferTypes from '../types/offer-types';
 
 
 type AppProps = {
-  countOffers: number;
-   Offers:OfferTypes;
+  offers:OfferTypes[];
 }
 
-function App ({countOffers,Offers}:AppProps){
+function App ({offers}:AppProps){
   return (
     <BrowserRouter>
       <Routes>
 
         <Route
           path={AppRoute.Main}
-          element={<Main countOffers={countOffers}
-            Offers={Offers}
-/>
-                  }
+          element={<Main offers={offers}/>}
         />
 
         <Route

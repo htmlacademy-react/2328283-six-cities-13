@@ -5,7 +5,7 @@ type Location = {
 }
 
 type City = {
-  name: string;
+  name:string;
   location:Location;
 };
 
@@ -20,7 +20,6 @@ type OfferTypes = {
   isPremium: boolean;
   rating: number;
   previewImage:string;
-
 }
 
 export default OfferTypes;
